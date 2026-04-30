@@ -28,9 +28,11 @@ if (fs.existsSync(envPath)) {
 
 // ── CONFIG ────────────────────────────────────────────────────────
 const API_KEY = process.env.PSI_API_KEY || '';
-const STRATEGY = 'mobile'; // 'mobile' | 'desktop'
-const DELAY_MS = 2500;     // Pause between requests (PSI rate-limit: ~200 req/100s)
-const OUT_FILE = path.join(__dirname, '..', 'public', 'data', 'results.json');
+const STRATEGY  = 'mobile'; // 'mobile' | 'desktop'
+const DELAY_MS  = 2500;     // Pause between requests (PSI rate-limit: ~200 req/100s)
+const RETRY_MS  = 8000;     // Longer pause before a retry
+const MAX_RETRY = 2;        // Max retries per site before giving up
+const OUT_FILE  = path.join(__dirname, '..', 'public', 'data', 'results.json');
 
 if (!API_KEY) {
   console.error('\n❌  PSI_API_KEY is not set.');
@@ -54,7 +56,7 @@ const SITES = [
   { id: 7, name: 'Absa Ghana', url: 'https://www.absa.com.gh', category: 'banking' },
   { id: 8, name: 'Stanbic Ghana', url: 'https://www.stanbicbank.com.gh', category: 'banking' },
   { id: 9, name: 'Ecobank Ghana', url: 'https://www.ecobank.com', category: 'banking' },
-  { id: 10, name: 'MTN Ghana', url: 'https://www.mtn.com.gh', category: 'telecom' },
+  { id: 10, name: 'MTN Ghana', url: 'https://mtn.com.gh', fallbackUrl: 'https://www.mtn.com.gh', category: 'telecom' },
   // E-Commerce
   { id: 11, name: 'Jumia Ghana', url: 'https://www.jumia.com.gh', category: 'ecommerce' },
   { id: 12, name: 'Tonaton', url: 'https://tonaton.com', category: 'ecommerce' },
@@ -170,33 +172,51 @@ async function main() {
   for (let i = 0; i < SITES.length; i++) {
     const site = SITES[i];
     const progress = `[${i + 1}/${SITES.length}]`;
+    // Collect URLs to try: primary first, then fallback if defined
+    const urlsToTry = [site.url, ...(site.fallbackUrl ? [site.fallbackUrl] : [])];
+    let succeeded = false;
 
-    process.stdout.write(`${progress} Scanning ${site.name} (${site.url})... `);
+    for (let attempt = 0; attempt <= MAX_RETRY && !succeeded; attempt++) {
+      // On retry, try the fallback URL if available
+      const scanUrl = urlsToTry[Math.min(attempt, urlsToTry.length - 1)];
+      const isRetry = attempt > 0;
+      const retryTag = isRetry ? ` (retry ${attempt}/${MAX_RETRY}${scanUrl !== site.url ? ', fallback URL' : ''})` : '';
 
-    const apiUrl = [
-      'https://www.googleapis.com/pagespeedonline/v5/runPagespeed',
-      `?url=${encodeURIComponent(site.url)}`,
-      `&strategy=${STRATEGY}`,
-      `&category=performance`,
-      `&category=accessibility`,
-      `&category=best-practices`,
-      `&category=seo`,
-      `&key=${API_KEY}`,
-    ].join('');
+      process.stdout.write(`${progress} Scanning ${site.name}${retryTag} (${scanUrl})... `);
 
-    try {
-      const data = await fetchJSON(apiUrl);
-      if (data.error) throw new Error(data.error.message);
+      const apiUrl = [
+        'https://www.googleapis.com/pagespeedonline/v5/runPagespeed',
+        `?url=${encodeURIComponent(scanUrl)}`,
+        `&strategy=${STRATEGY}`,
+        `&category=performance`,
+        `&category=accessibility`,
+        `&category=best-practices`,
+        `&category=seo`,
+        `&key=${API_KEY}`,
+      ].join('');
 
-      const parsed = parsePSI(site, data);
-      results.push(parsed);
+      try {
+        const data = await fetchJSON(apiUrl);
+        if (data.error) throw new Error(data.error.message);
 
-      const score = parsed.scores.performance;
-      const emoji = score >= 90 ? '🟢' : score >= 50 ? '🟡' : '🔴';
-      console.log(`${emoji} Score: ${score} | LCP: ${parsed.metrics.lcp}s | CLS: ${parsed.metrics.cls}`);
-    } catch (err) {
-      console.error(`❌ Failed: ${err.message}`);
-      errors.push({ site: site.name, error: err.message });
+        const parsed = parsePSI(site, data);
+        results.push(parsed);
+        succeeded = true;
+
+        const score = parsed.scores.performance;
+        const emoji = score >= 90 ? '🟢' : score >= 50 ? '🟡' : '🔴';
+        console.log(`${emoji} Score: ${score} | LCP: ${parsed.metrics.lcp}s | CLS: ${parsed.metrics.cls}`);
+      } catch (err) {
+        const isLast = attempt === MAX_RETRY;
+        if (isLast) {
+          console.error(`❌ Failed (${MAX_RETRY + 1} attempts): ${err.message}`);
+          errors.push({ site: site.name, error: err.message });
+        } else {
+          console.error(`⚠️  Attempt ${attempt + 1} failed: ${err.message.slice(0, 80)}`);
+          process.stdout.write(`    ⏳ Retrying in ${RETRY_MS / 1000}s...\r`);
+          await sleep(RETRY_MS);
+        }
+      }
     }
 
     // Wait between requests (skip delay after last site)
