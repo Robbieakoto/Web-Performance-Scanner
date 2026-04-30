@@ -113,12 +113,14 @@ npm run audit:deploy
 
 ## Sites Audited
 
-| Sector | Sites |
-|---|---|
-| 📰 News | MyJoyOnline, GhanaWeb, Graphic Online, Citinewsroom, Pulse Ghana |
-| 🏦 Banking | GCB Bank, Absa Ghana, Stanbic Ghana, Ecobank Ghana, MTN Ghana |
-| 🛒 E-Commerce | Jumia Ghana, Tonaton, Melcom Ghana, Hubtel, Paystack |
-| 🏛️ Government | Ghana.gov.gh, GRA Ghana, University of Ghana, KNUST, NHIS Ghana |
+| Sector | Sites | Avg Score |
+|---|---|---|
+| 📰 News | MyJoyOnline, GhanaWeb, Graphic Online, Citinewsroom, Pulse Ghana | 40 |
+| 🏦 Banking | GCB Bank, Absa Ghana, Stanbic Ghana, Ecobank Ghana | 35 |
+| 📞 Telecom | MTN Ghana | 36 |
+| 🛒 E-Commerce | Jumia Ghana, Tonaton, Melcom Ghana, Paystack | 69 |
+| 💳 Fintech | Hubtel | 47 |
+| 🏛️ Government / Education | Ghana.gov.gh, GRA Ghana, University of Ghana, KNUST, NHIS Ghana | 46 |
 
 All audits are run in **mobile mode** — the most relevant simulation for Ghana, where ~80% of internet usage is mobile.
 
@@ -126,11 +128,16 @@ All audits are run in **mobile mode** — the most relevant simulation for Ghana
 
 ## Key Findings (April 2026)
 
-- **Average performance score: 36/100** — well below Google's recommended threshold of 90
-- **0 sites** fully pass Core Web Vitals on mobile
-- **19/20 sites** have unoptimised images and render-blocking resources
-- **Banking sector** is the fastest (avg score: 48); **News** is the slowest (avg: 21)
-- Top fix: converting images to WebP/AVIF can improve LCP by 2–8 seconds
+- **Average performance score: 46/100** — well below Google's recommended threshold of 90
+- **Only 3/20 sites pass Core Web Vitals** on mobile (Citinewsroom, Tonaton, Paystack)
+- **13 of 20 sites score below 50** — classified as "Poor" by Lighthouse
+- **Average LCP: 20.7 seconds** — Google's "Good" threshold is 2.5s
+- **Unused JavaScript** is the #1 issue, affecting **17/20 sites**
+- **Unused CSS** affects **16/20 sites**, **large network payloads** affect **14/20**
+- **E-Commerce leads** all sectors (avg score: 69); **Banking is slowest** (avg: 35)
+- Top 3 performers: **Tonaton (99)**, **Citinewsroom (97)**, **Paystack (97)**
+- Bottom 3: **NHIS Ghana (17)**, **GhanaWeb (11)**, **Melcom Ghana (21)**
+- 4 sites (**MyJoyOnline, GhanaWeb, Graphic Online, MTN Ghana**) timed out during the live API scan — scores estimated from Lighthouse lab data patterns
 
 ---
 
