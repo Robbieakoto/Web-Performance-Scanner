@@ -14,8 +14,8 @@
  *   https://developers.google.com/speed/docs/insights/v5/get-started
  */
 
-const fs    = require('fs');
-const path  = require('path');
+const fs = require('fs');
+const path = require('path');
 const https = require('https');
 
 // Auto-load .env from project root (if it exists)
@@ -27,7 +27,7 @@ if (fs.existsSync(envPath)) {
 }
 
 // ── CONFIG ────────────────────────────────────────────────────────
-const API_KEY  = process.env.PSI_API_KEY || '';
+const API_KEY = process.env.PSI_API_KEY || '';
 const STRATEGY = 'mobile'; // 'mobile' | 'desktop'
 const DELAY_MS = 2500;     // Pause between requests (PSI rate-limit: ~200 req/100s)
 const OUT_FILE = path.join(__dirname, '..', 'public', 'data', 'results.json');
@@ -44,29 +44,29 @@ if (!API_KEY) {
 // ── SITES LIST ────────────────────────────────────────────────────
 const SITES = [
   // News
-  { id: 1,  name: 'MyJoyOnline',       url: 'https://www.myjoyonline.com',    category: 'news' },
-  { id: 2,  name: 'GhanaWeb',          url: 'https://www.ghanaweb.com',        category: 'news' },
-  { id: 3,  name: 'Graphic Online',    url: 'https://www.graphic.com.gh',      category: 'news' },
-  { id: 4,  name: 'Citinewsroom',      url: 'https://citinewsroom.com',        category: 'news' },
-  { id: 5,  name: 'Pulse Ghana',       url: 'https://www.pulse.com.gh',        category: 'news' },
+  { id: 1, name: 'MyJoyOnline', url: 'https://www.myjoyonline.com', category: 'news' },
+  { id: 2, name: 'GhanaWeb', url: 'https://www.ghanaweb.com', category: 'news' },
+  { id: 3, name: 'Graphic Online', url: 'https://www.graphic.com.gh', category: 'news' },
+  { id: 4, name: 'Citinewsroom', url: 'https://citinewsroom.com', category: 'news' },
+  { id: 5, name: 'Pulse Ghana', url: 'https://www.pulse.com.gh', category: 'news' },
   // Banking
-  { id: 6,  name: 'GCB Bank',          url: 'https://www.gcbbank.com.gh',      category: 'banking' },
-  { id: 7,  name: 'Absa Ghana',        url: 'https://www.absa.com.gh',         category: 'banking' },
-  { id: 8,  name: 'Stanbic Ghana',     url: 'https://www.stanbicbank.com.gh',  category: 'banking' },
-  { id: 9,  name: 'Ecobank Ghana',     url: 'https://www.ecobank.com',         category: 'banking' },
-  { id: 10, name: 'MTN Ghana',         url: 'https://www.mtn.com.gh',          category: 'banking' },
+  { id: 6, name: 'GCB Bank', url: 'https://www.gcbbank.com.gh', category: 'banking' },
+  { id: 7, name: 'Absa Ghana', url: 'https://www.absa.com.gh', category: 'banking' },
+  { id: 8, name: 'Stanbic Ghana', url: 'https://www.stanbicbank.com.gh', category: 'banking' },
+  { id: 9, name: 'Ecobank Ghana', url: 'https://www.ecobank.com', category: 'banking' },
+  { id: 10, name: 'MTN Ghana', url: 'https://www.mtn.com.gh', category: 'telecom' },
   // E-Commerce
-  { id: 11, name: 'Jumia Ghana',       url: 'https://www.jumia.com.gh',        category: 'ecommerce' },
-  { id: 12, name: 'Tonaton',           url: 'https://tonaton.com',             category: 'ecommerce' },
-  { id: 13, name: 'Melcom Ghana',      url: 'https://melcom.com',              category: 'ecommerce' },
-  { id: 14, name: 'Hubtel',            url: 'https://hubtel.com',              category: 'ecommerce' },
-  { id: 15, name: 'Paystack',          url: 'https://paystack.com',            category: 'ecommerce' },
+  { id: 11, name: 'Jumia Ghana', url: 'https://www.jumia.com.gh', category: 'ecommerce' },
+  { id: 12, name: 'Tonaton', url: 'https://tonaton.com', category: 'ecommerce' },
+  { id: 13, name: 'Melcom Ghana', url: 'https://melcom.com', category: 'ecommerce' },
+  { id: 14, name: 'Hubtel', url: 'https://hubtel.com', category: 'fintech' },
+  { id: 15, name: 'Paystack', url: 'https://paystack.com', category: 'ecommerce' },
   // Government / Education
-  { id: 16, name: 'Ghana.gov.gh',      url: 'https://ghana.gov.gh',            category: 'government' },
-  { id: 17, name: 'GRA Ghana',         url: 'https://gra.gov.gh',              category: 'government' },
-  { id: 18, name: 'University of Ghana', url: 'https://www.ug.edu.gh',         category: 'government' },
-  { id: 19, name: 'KNUST',             url: 'https://www.knust.edu.gh',        category: 'government' },
-  { id: 20, name: 'NHIS Ghana',        url: 'https://nhis.gov.gh',             category: 'government' },
+  { id: 16, name: 'Ghana.gov.gh', url: 'https://ghana.gov.gh', category: 'government' },
+  { id: 17, name: 'GRA Ghana', url: 'https://gra.gov.gh', category: 'government' },
+  { id: 18, name: 'University of Ghana', url: 'https://www.ug.edu.gh', category: 'government' },
+  { id: 19, name: 'KNUST', url: 'https://www.knust.edu.gh', category: 'government' },
+  { id: 20, name: 'NHIS Ghana', url: 'https://nhis.gov.gh', category: 'government' },
 ];
 
 // ── HELPERS ───────────────────────────────────────────────────────
@@ -93,23 +93,24 @@ function num(val, decimals = 2) {
 
 // ── PSI PARSER ────────────────────────────────────────────────────
 function parsePSI(site, psiData) {
-  const cats      = psiData.lighthouseResult?.categories || {};
-  const audits    = psiData.lighthouseResult?.audits || {};
-  const metrics   = audits['metrics']?.details?.items?.[0] || {};
+  const cats = psiData.lighthouseResult?.categories || {};
+  const audits = psiData.lighthouseResult?.audits || {};
+  const metrics = audits['metrics']?.details?.items?.[0] || {};
+  const inp = num(audits['interaction-to-next-paint']?.numericValue || 0);
 
   const score = key => Math.round((cats[key]?.score || 0) * 100);
 
   // Core Web Vitals & timing (values in ms from Lighthouse, convert to seconds)
   const ms = key => num((metrics[key] || 0) / 1000);
 
-  const lcp  = ms('largestContentfulPaint');
-  const fcp  = ms('firstContentfulPaint');
-  const si   = ms('speedIndex');
-  const tti  = ms('interactive');
-  const tbt  = num(metrics['totalBlockingTime'] || 0, 0);
+  const lcp = ms('largestContentfulPaint');
+  const fcp = ms('firstContentfulPaint');
+  const si = ms('speedIndex');
+  const tti = ms('interactive');
+  const tbt = num(metrics['totalBlockingTime'] || 0, 0);
 
   // CLS is already a unitless score
-  const cls  = num(audits['cumulative-layout-shift']?.numericValue || 0);
+  const cls = num(audits['cumulative-layout-shift']?.numericValue || 0);
 
   // TTFB from the server-response-time audit (in ms)
   const ttfb = num((audits['server-response-time']?.numericValue || 0) / 1000);
@@ -127,31 +128,32 @@ function parsePSI(site, psiData) {
     url: site.url,
     category: site.category,
     scores: {
-      performance:    score('performance'),
-      accessibility:  score('accessibility'),
+      performance: score('performance'),
+      accessibility: score('accessibility'),
       best_practices: score('best-practices'),
-      seo:            score('seo'),
+      seo: score('seo'),
     },
     metrics: {
       fcp,
       lcp,
+      inp,
       cls,
       ttfb,
-      speed_index:  si,
+      speed_index: si,
       tti,
       tbt,
     },
     audits: {
-      unoptimized_images:        failed('uses-optimized-images'),
+      unoptimized_images: failed('uses-optimized-images'),
       render_blocking_resources: failed('render-blocking-resources'),
-      unused_javascript:         failed('unused-javascript'),
-      unused_css:                failed('unused-css-rules'),
-      no_https:                  failed('is-on-https'),
-      no_text_compression:       failed('uses-text-compression'),
-      missing_alt_text:          failed('image-alt'),
-      large_network_payload:     failed('total-byte-weight'),
-      no_lazy_loading:           failed('offscreen-images'),
-      no_cdn:                    failed('uses-long-cache-ttl'),
+      unused_javascript: failed('unused-javascript'),
+      unused_css: failed('unused-css-rules'),
+      no_https: failed('is-on-https'),
+      no_text_compression: failed('uses-text-compression'),
+      missing_alt_text: failed('image-alt'),
+      large_network_payload: failed('total-byte-weight'),
+      no_lazy_loading: failed('offscreen-images'),
+      no_cdn: failed('uses-long-cache-ttl'),
     },
   };
 }
@@ -162,7 +164,7 @@ async function main() {
   console.log(`    Strategy: ${STRATEGY.toUpperCase()} | Sites: ${SITES.length}\n`);
 
   const results = [];
-  const errors  = [];
+  const errors = [];
 
   for (let i = 0; i < SITES.length; i++) {
     const site = SITES[i];
@@ -182,7 +184,7 @@ async function main() {
     ].join('');
 
     try {
-      const data   = await fetchJSON(apiUrl);
+      const data = await fetchJSON(apiUrl);
       if (data.error) throw new Error(data.error.message);
 
       const parsed = parsePSI(site, data);
@@ -206,11 +208,11 @@ async function main() {
   // Write output
   const output = {
     meta: {
-      scanned_at:   new Date().toISOString(),
-      strategy:     STRATEGY,
-      api_version:  'v5',
-      total_sites:  results.length,
-      errors:       errors.length,
+      scanned_at: new Date().toISOString(),
+      strategy: STRATEGY,
+      api_version: 'v5',
+      total_sites: results.length,
+      errors: errors.length,
     },
     sites: results,
   };

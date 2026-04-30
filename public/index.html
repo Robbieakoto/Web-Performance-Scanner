@@ -183,6 +183,7 @@
               <th class="th-metric sortable" data-col="cls">CLS <span class="sort-icon">⇅</span></th>
               <th class="th-metric sortable" data-col="fcp">FCP <span class="sort-icon">⇅</span></th>
               <th class="th-metric sortable" data-col="ttfb">TTFB <span class="sort-icon">⇅</span></th>
+              <th class="th-metric sortable" data-col="inp">INP <span class="sort-icon">⇅</span></th>
               <th class="th-issues">Issues</th>
               <th class="th-a11y sortable" data-col="accessibility">A11y <span class="sort-icon">⇅</span></th>
             </tr>
@@ -194,6 +195,8 @@
       </div>
       <div class="table-footnote">
         All audits run in <strong>mobile mode</strong> using the Google PageSpeed Insights API v5. Data collected April 2026.
+        "Passing CWV" requires LCP ≤ 2.5s, INP ≤ 200ms, and CLS ≤ 0.1 — all three Google thresholds.
+        Sites where INP was not captured are evaluated on LCP and CLS only.
       </div>
     </div>
   </section>

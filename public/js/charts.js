@@ -194,9 +194,74 @@ function buildCWVBubbleChart() {
     borderWidth: 2,
   }));
 
+  // ── Custom inline plugin: threshold lines drawn in afterDraw ─────
+  const cwvThresholdPlugin = {
+    id: 'cwvThresholds',
+    afterDraw(chart) {
+      const { ctx: c, chartArea, scales } = chart;
+      const { left, right, top, bottom } = chartArea;
+      const xScale = scales.x;
+      const yScale = scales.y;
+      if (!xScale || !yScale) return;
+
+      c.save();
+
+      // Shaded pass zone: LCP ≤ 2.5s AND CLS ≤ 0.1
+      const pxLcp = Math.min(xScale.getPixelForValue(2.5), right);
+      const pxCls = Math.max(yScale.getPixelForValue(0.1), top);
+      c.fillStyle = 'rgba(34, 197, 94, 0.07)';
+      c.fillRect(left, pxCls, pxLcp - left, bottom - pxCls);
+
+      // Vertical line — LCP = 2.5s (green, dashed)
+      if (pxLcp >= left && pxLcp <= right) {
+        c.beginPath();
+        c.setLineDash([6, 4]);
+        c.lineWidth = 1.5;
+        c.strokeStyle = '#22C55E';
+        c.moveTo(pxLcp, top);
+        c.lineTo(pxLcp, bottom);
+        c.stroke();
+
+        c.setLineDash([]);
+        c.fillStyle = '#22C55E';
+        c.font = '600 11px Inter, sans-serif';
+        c.textAlign = 'center';
+        c.fillText('LCP 2.5s', pxLcp, top + 13);
+      }
+
+      // Horizontal line — CLS = 0.1 (amber, dashed)
+      if (pxCls >= top && pxCls <= bottom) {
+        c.beginPath();
+        c.setLineDash([6, 4]);
+        c.lineWidth = 1.5;
+        c.strokeStyle = '#F59E0B';
+        c.moveTo(left, pxCls);
+        c.lineTo(right, pxCls);
+        c.stroke();
+
+        c.setLineDash([]);
+        c.fillStyle = '#F59E0B';
+        c.font = '600 11px Inter, sans-serif';
+        c.textAlign = 'left';
+        c.fillText('CLS 0.1', left + 6, pxCls - 5);
+      }
+
+      // "✓ Pass zone" label in bottom-left of pass quadrant
+      if (pxLcp > left + 50) {
+        c.fillStyle = 'rgba(34, 197, 94, 0.45)';
+        c.font = '500 10px Inter, sans-serif';
+        c.textAlign = 'right';
+        c.fillText('✓ Pass zone', pxLcp - 6, bottom - 6);
+      }
+
+      c.restore();
+    }
+  };
+
   new Chart(ctx, {
     type: 'bubble',
     data: { datasets },
+    plugins: [cwvThresholdPlugin],
     options: {
       responsive: true,
       maintainAspectRatio: false,
@@ -204,29 +269,26 @@ function buildCWVBubbleChart() {
         legend: { position: 'bottom' },
         tooltip: {
           callbacks: {
-            label: ctx => {
+            label: function(ctx) {
               const d = ctx.raw;
-              return [` ${d.name}`, ` LCP: ${d.x}s | CLS: ${d.y} | Score: ${d.score}`];
+              return [' ' + d.name, ' LCP: ' + d.x + 's | CLS: ' + d.y + ' | Score: ' + d.score];
             }
           }
         }
       },
       scales: {
         x: {
-          title: { display: true, text: 'LCP (seconds) → lower is better', color: COLORS.muted },
+          title: { display: true, text: 'LCP (seconds) \u2014 lower is better', color: COLORS.muted },
           grid: { color: 'rgba(255,255,255,0.05)' },
-          ticks: { callback: v => v + 's' }
+          ticks: { callback: function(v) { return v + 's'; } }
         },
         y: {
-          title: { display: true, text: 'CLS → lower is better', color: COLORS.muted },
+          title: { display: true, text: 'CLS \u2014 lower is better', color: COLORS.muted },
           grid: { color: 'rgba(255,255,255,0.05)' },
         }
       }
     }
   });
-
-  // Draw threshold lines via annotation-free approach (using a custom plugin)
-  // We'll draw them using afterDraw since chart.js annotation plugin isn't loaded
 }
 
 function buildAllCharts() {

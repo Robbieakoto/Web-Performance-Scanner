@@ -30,6 +30,7 @@ function lcpClass(val)  { return val <= 2.5 ? 'metric-good' : val <= 4.0 ? 'metr
 function clsClass(val)  { return val <= 0.1 ? 'metric-good' : val <= 0.25 ? 'metric-warn' : 'metric-bad'; }
 function fcpClass(val)  { return val <= 1.8 ? 'metric-good' : val <= 3.0 ? 'metric-warn' : 'metric-bad'; }
 function ttfbClass(val) { return val <= 0.8 ? 'metric-good' : val <= 1.8 ? 'metric-warn' : 'metric-bad'; }
+function inpClass(val)  { return val <= 200 ? 'metric-good' : val <= 500 ? 'metric-warn' : 'metric-bad'; }
 
 function renderTable(sites) {
   const tbody = document.getElementById('tableBody');
@@ -74,6 +75,9 @@ function renderTable(sites) {
         </td>
         <td class="metric-cell">
           <span class="metric-value ${ttfbClass(site.metrics.ttfb)}">${site.metrics.ttfb}s</span>
+        </td>
+        <td class="metric-cell">
+          <span class="metric-value ${inpClass(site.metrics.inp ?? 0)}">${site.metrics.inp != null ? site.metrics.inp + 'ms' : 'N/A'}</span>
         </td>
         <td>
           <div class="issues-cell">
@@ -253,9 +257,9 @@ function setupTableSort() {
 function sortSites(sites, col, dir) {
   return [...sites].sort((a, b) => {
     let va, vb;
-    const metricKeys = ['lcp','fcp','cls','ttfb','speed_index'];
+    const metricKeys = ['lcp','fcp','cls','ttfb','inp','speed_index'];
     if (metricKeys.includes(col)) {
-      va = a.metrics[col]; vb = b.metrics[col];
+      va = a.metrics[col] ?? 0; vb = b.metrics[col] ?? 0;
     } else if (['performance','accessibility','best_practices','seo'].includes(col)) {
       va = a.scores[col]; vb = b.scores[col];
     } else {
