@@ -96,7 +96,8 @@ function parsePSI(site, psiData) {
   const cats = psiData.lighthouseResult?.categories || {};
   const audits = psiData.lighthouseResult?.audits || {};
   const metrics = audits['metrics']?.details?.items?.[0] || {};
-  const inp = num(audits['interaction-to-next-paint']?.numericValue || 0);
+  const inpRaw = audits['interaction-to-next-paint']?.numericValue;
+  const inp = inpRaw != null ? num(inpRaw, 0) : null;
 
   const score = key => Math.round((cats[key]?.score || 0) * 100);
 
