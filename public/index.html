@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ghana Web Performance Scanner | PageSpeed Insights Audit</title>
+  <meta name="description" content="A comprehensive web performance audit of 20 major Ghanaian websites across news, banking, e-commerce, and government sectors using Google PageSpeed Insights." />
+  <meta name="keywords" content="Ghana, web performance, PageSpeed Insights, Core Web Vitals, LCP, CLS, FCP" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Ghana Web Performance Scanner" />
+  <meta property="og:description" content="How fast are Ghana's top websites? We audited 20 sites across 4 sectors." />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <span class="logo-icon">🇬🇭</span>
+        <span class="logo-text">GH<span class="logo-accent">Perf</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="#results" class="nav-link">Results</a>
+        <a href="#analysis" class="nav-link">Analysis</a>
+        <a href="#recommendations" class="nav-link">Fixes</a>
+        <a href="#methodology" class="nav-link">Methodology</a>
+      </div>
+      <div class="nav-badge">
+        <span class="badge-dot"></span>
+        Mobile Audit · Apr 2026
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="hero-grid"></div>
+      <div class="hero-glow hero-glow-1"></div>
+      <div class="hero-glow hero-glow-2"></div>
+      <div class="hero-glow hero-glow-3"></div>
+    </div>
+    <div class="container">
+      <div class="hero-eyebrow">
+        <span class="eyebrow-flag">🇬🇭</span>
+        <span>Ghana Digital Infrastructure Report · 2026</span>
+      </div>
+      <h1 class="hero-title">
+        How Fast Are <br />
+        <span class="title-highlight">Ghana's Websites?</span>
+      </h1>
+      <p class="hero-subtitle">
+        We ran Google PageSpeed Insights audits on <strong>20 major Ghanaian websites</strong>
+        across news, banking, e-commerce, and government sectors — and the results
+        reveal a significant web performance gap.
+      </p>
+      <div class="hero-stats" id="heroStats">
+        <div class="hero-stat">
+          <div class="stat-value" data-target="20">0</div>
+          <div class="stat-label">Sites Audited</div>
+        </div>
+        <div class="hero-stat">
+          <div class="stat-value" id="avgScore" data-target="0">—</div>
+          <div class="stat-label">Avg Performance Score</div>
+        </div>
+        <div class="hero-stat">
+          <div class="stat-value" id="passingCount" data-target="0">—</div>
+          <div class="stat-label">Sites Passing Core Web Vitals</div>
+        </div>
+        <div class="hero-stat">
+          <div class="stat-value" id="topIssueCount" data-target="0">—</div>
+          <div class="stat-label">Common Issues Found</div>
+        </div>
+      </div>
+      <div class="hero-cta">
+        <a href="#results" class="btn btn-primary" id="exploreBtn">
+          <span>Explore the Data</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1L15 8L8 15M15 8H1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#recommendations" class="btn btn-ghost">See Recommendations</a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <div class="scroll-line"></div>
+      <span>Scroll to explore</span>
+    </div>
+  </section>
+
+  <!-- ── SUMMARY CARDS ── -->
+  <section class="summary-section" id="summary">
+    <div class="container">
+      <div class="summary-grid" id="summaryGrid">
+        <div class="summary-card summary-card--best">
+          <div class="summary-card-icon">🏆</div>
+          <div class="summary-card-content">
+            <div class="summary-card-label">Top Performer</div>
+            <div class="summary-card-value" id="bestSite">—</div>
+            <div class="summary-card-sub" id="bestScore">Score: —</div>
+          </div>
+        </div>
+        <div class="summary-card summary-card--worst">
+          <div class="summary-card-icon">⚠️</div>
+          <div class="summary-card-content">
+            <div class="summary-card-label">Needs Most Work</div>
+            <div class="summary-card-value" id="worstSite">—</div>
+            <div class="summary-card-sub" id="worstScore">Score: —</div>
+          </div>
+        </div>
+        <div class="summary-card summary-card--issue">
+          <div class="summary-card-icon">🔴</div>
+          <div class="summary-card-content">
+            <div class="summary-card-label">Most Common Issue</div>
+            <div class="summary-card-value" id="topIssue">—</div>
+            <div class="summary-card-sub" id="topIssueAffected">— of 20 sites</div>
+          </div>
+        </div>
+        <div class="summary-card summary-card--sector">
+          <div class="summary-card-icon">📊</div>
+          <div class="summary-card-content">
+            <div class="summary-card-label">Fastest Sector</div>
+            <div class="summary-card-value" id="fastestSector">—</div>
+            <div class="summary-card-sub" id="fastestSectorScore">Avg score: —</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── RESULTS TABLE ── -->
+  <section class="results-section" id="results">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Full Audit Results</div>
+        <h2 class="section-title">All 20 Sites Ranked</h2>
+        <p class="section-desc">
+          Sorted by performance score. Click any column header to re-sort.
+          Filter by sector using the tabs below.
+        </p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="filter-tabs" id="filterTabs">
+        <button class="filter-tab active" data-filter="all" id="tab-all">All Sites</button>
+        <button class="filter-tab" data-filter="news" id="tab-news">
+          <span class="tab-emoji">📰</span> News
+        </button>
+        <button class="filter-tab" data-filter="banking" id="tab-banking">
+          <span class="tab-emoji">🏦</span> Banking
+        </button>
+        <button class="filter-tab" data-filter="ecommerce" id="tab-ecommerce">
+          <span class="tab-emoji">🛒</span> E-Commerce
+        </button>
+        <button class="filter-tab" data-filter="government" id="tab-government">
+          <span class="tab-emoji">🏛️</span> Government
+        </button>
+      </div>
+
+      <!-- Table -->
+      <div class="table-wrapper">
+        <table class="results-table" id="resultsTable">
+          <thead>
+            <tr>
+              <th class="th-rank">#</th>
+              <th class="th-site sortable" data-col="name">Site <span class="sort-icon">⇅</span></th>
+              <th class="th-category">Sector</th>
+              <th class="th-score sortable active-sort" data-col="performance">
+                Perf Score <span class="sort-icon">↓</span>
+              </th>
+              <th class="th-metric sortable" data-col="lcp">LCP <span class="sort-icon">⇅</span></th>
+              <th class="th-metric sortable" data-col="cls">CLS <span class="sort-icon">⇅</span></th>
+              <th class="th-metric sortable" data-col="fcp">FCP <span class="sort-icon">⇅</span></th>
+              <th class="th-metric sortable" data-col="ttfb">TTFB <span class="sort-icon">⇅</span></th>
+              <th class="th-issues">Issues</th>
+              <th class="th-a11y sortable" data-col="accessibility">A11y <span class="sort-icon">⇅</span></th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- Populated by JS -->
+          </tbody>
+        </table>
+      </div>
+      <div class="table-footnote">
+        All audits run in <strong>mobile mode</strong> using the Google PageSpeed Insights API v5. Data collected April 2026.
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ANALYSIS / CHARTS ── -->
+  <section class="analysis-section" id="analysis">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Issue Analysis</div>
+        <h2 class="section-title">What's Holding Ghana's Web Back?</h2>
+        <p class="section-desc">
+          Across all 20 sites, these are the most frequently flagged performance issues by the Lighthouse audit engine.
+        </p>
+      </div>
+
+      <div class="charts-grid">
+        <!-- Issues breakdown -->
+        <div class="chart-card chart-card--wide">
+          <div class="chart-card-header">
+            <h3 class="chart-title">Most Common Performance Issues</h3>
+            <span class="chart-subtitle">Number of sites failing each audit (out of 20)</span>
+          </div>
+          <div class="chart-wrapper">
+            <canvas id="issuesChart" aria-label="Bar chart showing most common performance issues"></canvas>
+          </div>
+        </div>
+
+        <!-- Score distribution -->
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <h3 class="chart-title">Score Distribution</h3>
+            <span class="chart-subtitle">Performance scores across all sites</span>
+          </div>
+          <div class="chart-wrapper">
+            <canvas id="scoreDistChart" aria-label="Bar chart showing performance score distribution"></canvas>
+          </div>
+        </div>
+
+        <!-- Sector comparison -->
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <h3 class="chart-title">Sector Comparison</h3>
+            <span class="chart-subtitle">Average scores by sector</span>
+          </div>
+          <div class="chart-wrapper">
+            <canvas id="sectorChart" aria-label="Radar chart showing sector comparison"></canvas>
+          </div>
+        </div>
+
+        <!-- CWV Breakdown -->
+        <div class="chart-card chart-card--wide">
+          <div class="chart-card-header">
+            <h3 class="chart-title">Core Web Vitals — LCP vs. CLS</h3>
+            <span class="chart-subtitle">Each bubble is one site. Ideal: LCP &lt; 2.5s and CLS &lt; 0.1</span>
+          </div>
+          <div class="chart-wrapper chart-wrapper--tall">
+            <canvas id="cwvBubbleChart" aria-label="Bubble chart showing LCP vs CLS for each site"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── RECOMMENDATIONS ── -->
+  <section class="recs-section" id="recommendations">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Actionable Fixes</div>
+        <h2 class="section-title">Concrete Recommendations</h2>
+        <p class="section-desc">
+          Based on audit patterns, here are the highest-impact optimizations
+          Ghanaian web teams should prioritize — ranked by prevalence and potential gain.
+        </p>
+      </div>
+
+      <div class="recs-grid" id="recsGrid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ── METHODOLOGY ── -->
+  <section class="methodology-section" id="methodology">
+    <div class="container">
+      <div class="methodology-inner">
+        <div class="section-header section-header--left">
+          <div class="section-eyebrow">How We Did This</div>
+          <h2 class="section-title">Methodology</h2>
+        </div>
+        <div class="methodology-grid">
+          <div class="method-card">
+            <div class="method-icon">🔬</div>
+            <h4>Tool Used</h4>
+            <p>Google PageSpeed Insights API v5, powered by Lighthouse 11. Industry standard for web performance measurement.</p>
+          </div>
+          <div class="method-card">
+            <div class="method-icon">📱</div>
+            <h4>Device Mode</h4>
+            <p>All audits run in <strong>mobile mode</strong> — the most relevant simulation for Ghana where mobile internet dominates (~80% of users).</p>
+          </div>
+          <div class="method-card">
+            <div class="method-icon">🌐</div>
+            <h4>Network Simulation</h4>
+            <p>Lighthouse simulates a mid-tier mobile connection (150 Kbps download, 675ms RTT) — representative of typical Ghanaian mobile conditions.</p>
+          </div>
+          <div class="method-card">
+            <div class="method-icon">📅</div>
+            <h4>Data Collection</h4>
+            <p>Audits were run in April 2026. Results reflect one-time lab data and may vary with time of day and site updates.</p>
+          </div>
+          <div class="method-card">
+            <div class="method-icon">🎯</div>
+            <h4>Site Selection</h4>
+            <p>20 high-traffic Ghanaian sites selected across 4 sectors: News, Banking/Finance, E-Commerce/Tech, and Government/Education.</p>
+          </div>
+          <div class="method-card">
+            <div class="method-icon">📊</div>
+            <h4>Scoring</h4>
+            <p>Performance score is a weighted composite of FCP, LCP, Speed Index, TBT, and CLS — all measured by Lighthouse.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="logo-icon">🇬🇭</span>
+          <span class="logo-text">GH<span class="logo-accent">Perf</span></span>
+          <p class="footer-tagline">Ghana Web Performance Scanner</p>
+        </div>
+        <div class="footer-links">
+          <a href="https://developers.google.com/speed/docs/insights/v5/about" target="_blank" rel="noopener">PageSpeed Insights API</a>
+          <a href="https://web.dev/vitals/" target="_blank" rel="noopener">Core Web Vitals</a>
+          <a href="https://web.dev/lighthouse-performance/" target="_blank" rel="noopener">Lighthouse Docs</a>
+        </div>
+        <p class="footer-copy">
+          Data from Google PageSpeed Insights API · April 2026 · Built for the Ghana Developer Ecosystem
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS Modules -->
+  <script src="js/data.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/renderer.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "name": "ghana-web-perf-scanner",
+  "version": "1.0.0",
+  "description": "Ghana Web Performance Scanner — PageSpeed Insights audit of 20 Ghanaian websites",
+  "scripts": {
+    "dev": "npx serve public -p 3000",
+    "start": "npx serve public -p 3000",
+    "setup": "node scripts/setup.js",
+    "audit": "node scripts/run_audit.js",
+    "login": "npx firebase-tools login",
+    "deploy": "npx firebase-tools deploy --only hosting",
+    "audit:deploy": "node scripts/run_audit.js && npx firebase-tools deploy --only hosting"
+  },
+  "keywords": [
+    "ghana",
+    "web-performance",
+    "pagespeed",
+    "lighthouse"
+  ],
+  "author": "Ghana Developer Community",
+  "license": "MIT",
+  "devDependencies": {
+    "dotenv": "^17.4.2",
+    "serve": "^14.2.1"
+  }
+}

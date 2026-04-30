@@ -1,0 +1,539 @@
+{
+  "meta": {
+    "scanned_at": "2026-04-30T19:02:57.927Z",
+    "strategy": "mobile",
+    "api_version": "v5",
+    "total_sites": 16,
+    "errors": 4
+  },
+  "sites": [
+    {
+      "id": 4,
+      "name": "Citinewsroom",
+      "url": "https://citinewsroom.com",
+      "category": "news",
+      "scores": {
+        "performance": 96,
+        "accessibility": 90,
+        "best_practices": 96,
+        "seo": 40
+      },
+      "metrics": {
+        "fcp": 0.76,
+        "lcp": 2.29,
+        "cls": 0,
+        "ttfb": 0,
+        "speed_index": 1.05,
+        "tti": 2.35,
+        "tbt": 168
+      },
+      "audits": {
+        "unoptimized_images": false,
+        "render_blocking_resources": false,
+        "unused_javascript": false,
+        "unused_css": false,
+        "no_https": false,
+        "no_text_compression": false,
+        "missing_alt_text": false,
+        "large_network_payload": false,
+        "no_lazy_loading": false,
+        "no_cdn": false
+      }
+    },
+    {
+      "id": 5,
+      "name": "Pulse Ghana",
+      "url": "https://www.pulse.com.gh",
+      "category": "news",
+      "scores": {
+        "performance": 51,
+        "accessibility": 95,
+        "best_practices": 92,
+        "seo": 92
+      },
+      "metrics": {
+        "fcp": 3.08,
+        "lcp": 9.05,
+        "cls": 0,
+        "ttfb": 0.01,
+        "speed_index": 5.62,
+        "tti": 9.1,
+        "tbt": 543
+      },
+      "audits": {
+        "unoptimized_images": false,
+        "render_blocking_resources": false,
+        "unused_javascript": true,
+        "unused_css": true,
+        "no_https": false,
+        "no_text_compression": false,
+        "missing_alt_text": false,
+        "large_network_payload": false,
+        "no_lazy_loading": false,
+        "no_cdn": false
+      }
+    },
+    {
+      "id": 6,
+      "name": "GCB Bank",
+      "url": "https://www.gcbbank.com.gh",
+      "category": "banking",
+      "scores": {
+        "performance": 42,
+        "accessibility": 78,
+        "best_practices": 69,
+        "seo": 75
+      },
+      "metrics": {
+        "fcp": 3.19,
+        "lcp": 25.51,
+        "cls": 0.12,
+        "ttfb": 0.01,
+        "speed_index": 7.8,
+        "tti": 26.65,
+        "tbt": 634
+      },
+      "audits": {
+        "unoptimized_images": false,
+        "render_blocking_resources": false,
+        "unused_javascript": true,
+        "unused_css": true,
+        "no_https": false,
+        "no_text_compression": false,
+        "missing_alt_text": true,
+        "large_network_payload": true,
+        "no_lazy_loading": false,
+        "no_cdn": false
+      }
+    },
+    {
+      "id": 7,
+      "name": "Absa Ghana",
+      "url": "https://www.absa.com.gh",
+      "category": "banking",
+      "scores": {
+        "performance": 24,
+        "accessibility": 86,
+        "best_practices": 54,
+        "seo": 100
+      },
+      "metrics": {
+        "fcp": 9.68,
+        "lcp": 19.77,
+        "cls": 0.2,
+        "ttfb": 0,
+        "speed_index": 10.03,
+        "tti": 32.27,
+        "tbt": 1055
+      },
+      "audits": {
+        "unoptimized_images": false,
+        "render_blocking_resources": false,
+        "unused_javascript": true,
+        "unused_css": true,
+        "no_https": false,
+        "no_text_compression": false,
+        "missing_alt_text": false,
+        "large_network_payload": true,
+        "no_lazy_loading": false,
+        "no_cdn": false
+      }
+    },
+    {
+      "id": 8,
+      "name": "Stanbic Ghana",
+      "url": "https://www.stanbicbank.com.gh",
+      "category": "banking",
+      "scores": {
+        "performance": 34,
+        "accessibility": 86,
+        "best_practices": 50,
+        "seo": 77
+      },
+      "metrics": {
+        "fcp": 4.23,
+        "lcp": 24.86,
+        "cls": 0.01,
+        "ttfb": 0.01,
+        "speed_index": 10.83,
+        "tti": 25.32,
+        "tbt": 1165
+      },
+      "audits": {
+        "unoptimized_images": false,
+        "render_blocking_resources": false,
+        "unused_javascript": true,
+        "unused_css": true,
+        "no_https": false,
+        "no_text_compression": false,
+        "missing_alt_text": true,
+        "large_network_payload": true,
+        "no_lazy_loading": false,
+        "no_cdn": false
+      }
+    },
+    {
+      "id": 9,
+      "name": "Ecobank Ghana",
+      "url": "https://www.ecobank.com",
+      "category": "banking",
+      "scores": {
+        "performance": 28,
+        "accessibility": 72,
+        "best_practices": 92,
+        "seo": 75
+      },
+      "metrics": {
+        "fcp": 8.51,
+        "lcp": 62.59,
+        "cls": 0.67,
+        "ttfb": 0.41,
+        "speed_index": 8.51,
+        "tti": 62.77,
+        "tbt": 287
+      },
+      "audits": {
+        "unoptimized_images": false,
+        "render_blocking_resources": false,
+        "unused_javascript": true,
+        "unused_css": true,
+        "no_https": false,
+        "no_text_compression": false,
+        "missing_alt_text": true,
+        "large_network_payload": true,
+        "no_lazy_loading": false,
+        "no_cdn": false
+      }
+    },
+    {
+      "id": 11,
+      "name": "Jumia Ghana",
+      "url": "https://www.jumia.com.gh",
+      "category": "ecommerce",
+      "scores": {
+        "performance": 53,
+        "accessibility": 96,
+        "best_practices": 77,
+        "seo": 100
+      },
+      "metrics": {
+        "fcp": 1.68,
+        "lcp": 6.63,
+        "cls": 0,
+        "ttfb": 0.16,
+        "speed_index": 8.61,
+        "tti": 14.42,
+        "tbt": 608
+      },
+      "audits": {
+        "unoptimized_images": false,
+        "render_blocking_resources": false,
+        "unused_javascript": true,
+        "unused_css": false,
+        "no_https": false,
+        "no_text_compression": false,
+        "missing_alt_text": false,
+        "large_network_payload": false,
+        "no_lazy_loading": false,
+        "no_cdn": false
+      }
+    },
+    {
+      "id": 12,
+      "name": "Tonaton",
+      "url": "https://tonaton.com",
+      "category": "ecommerce",
+      "scores": {
+        "performance": 99,
+        "accessibility": 75,
+        "best_practices": 100,
+        "seo": 92
+      },
+      "metrics": {
+        "fcp": 1.35,
+        "lcp": 1.88,
+        "cls": 0,
+        "ttfb": 0,
+        "speed_index": 2.37,
+        "tti": 1.9,
+        "tbt": 0
+      },
+      "audits": {
+        "unoptimized_images": false,
+        "render_blocking_resources": false,
+        "unused_javascript": false,
+        "unused_css": true,
+        "no_https": false,
+        "no_text_compression": false,
+        "missing_alt_text": true,
+        "large_network_payload": false,
+        "no_lazy_loading": false,
+        "no_cdn": false
+      }
+    },
+    {
+      "id": 13,
+      "name": "Melcom Ghana",
+      "url": "https://melcom.com",
+      "category": "ecommerce",
+      "scores": {
+        "performance": 23,
+        "accessibility": 69,
+        "best_practices": 73,
+        "seo": 83
+      },
+      "metrics": {
+        "fcp": 9.2,
+        "lcp": 87.57,
+        "cls": 0.17,
+        "ttfb": 0.04,
+        "speed_index": 32.01,
+        "tti": 96.52,
+        "tbt": 1336
+      },
+      "audits": {
+        "unoptimized_images": false,
+        "render_blocking_resources": false,
+        "unused_javascript": true,
+        "unused_css": true,
+        "no_https": false,
+        "no_text_compression": false,
+        "missing_alt_text": true,
+        "large_network_payload": true,
+        "no_lazy_loading": false,
+        "no_cdn": false
+      }
+    },
+    {
+      "id": 14,
+      "name": "Hubtel",
+      "url": "https://hubtel.com",
+      "category": "ecommerce",
+      "scores": {
+        "performance": 55,
+        "accessibility": 64,
+        "best_practices": 92,
+        "seo": 85
+      },
+      "metrics": {
+        "fcp": 5.88,
+        "lcp": 24,
+        "cls": 0,
+        "ttfb": 0.02,
+        "speed_index": 8.5,
+        "tti": 25.08,
+        "tbt": 162
+      },
+      "audits": {
+        "unoptimized_images": false,
+        "render_blocking_resources": false,
+        "unused_javascript": true,
+        "unused_css": false,
+        "no_https": false,
+        "no_text_compression": false,
+        "missing_alt_text": true,
+        "large_network_payload": true,
+        "no_lazy_loading": false,
+        "no_cdn": false
+      }
+    },
+    {
+      "id": 15,
+      "name": "Paystack",
+      "url": "https://paystack.com",
+      "category": "ecommerce",
+      "scores": {
+        "performance": 93,
+        "accessibility": 90,
+        "best_practices": 96,
+        "seo": 40
+      },
+      "metrics": {
+        "fcp": 0.76,
+        "lcp": 2.28,
+        "cls": 0,
+        "ttfb": 0,
+        "speed_index": 1.18,
+        "tti": 2.34,
+        "tbt": 273
+      },
+      "audits": {
+        "unoptimized_images": false,
+        "render_blocking_resources": false,
+        "unused_javascript": false,
+        "unused_css": false,
+        "no_https": false,
+        "no_text_compression": false,
+        "missing_alt_text": false,
+        "large_network_payload": false,
+        "no_lazy_loading": false,
+        "no_cdn": false
+      }
+    },
+    {
+      "id": 16,
+      "name": "Ghana.gov.gh",
+      "url": "https://ghana.gov.gh",
+      "category": "government",
+      "scores": {
+        "performance": 67,
+        "accessibility": 91,
+        "best_practices": 92,
+        "seo": 92
+      },
+      "metrics": {
+        "fcp": 3.87,
+        "lcp": 7.38,
+        "cls": 0.01,
+        "ttfb": 0.01,
+        "speed_index": 3.87,
+        "tti": 7.38,
+        "tbt": 65
+      },
+      "audits": {
+        "unoptimized_images": false,
+        "render_blocking_resources": false,
+        "unused_javascript": true,
+        "unused_css": true,
+        "no_https": false,
+        "no_text_compression": false,
+        "missing_alt_text": false,
+        "large_network_payload": false,
+        "no_lazy_loading": false,
+        "no_cdn": false
+      }
+    },
+    {
+      "id": 17,
+      "name": "GRA Ghana",
+      "url": "https://gra.gov.gh",
+      "category": "government",
+      "scores": {
+        "performance": 53,
+        "accessibility": 71,
+        "best_practices": 96,
+        "seo": 69
+      },
+      "metrics": {
+        "fcp": 2.86,
+        "lcp": 15.56,
+        "cls": 0.03,
+        "ttfb": 0.01,
+        "speed_index": 8.77,
+        "tti": 15.58,
+        "tbt": 387
+      },
+      "audits": {
+        "unoptimized_images": false,
+        "render_blocking_resources": false,
+        "unused_javascript": true,
+        "unused_css": true,
+        "no_https": false,
+        "no_text_compression": false,
+        "missing_alt_text": true,
+        "large_network_payload": true,
+        "no_lazy_loading": false,
+        "no_cdn": false
+      }
+    },
+    {
+      "id": 18,
+      "name": "University of Ghana",
+      "url": "https://www.ug.edu.gh",
+      "category": "government",
+      "scores": {
+        "performance": 58,
+        "accessibility": 85,
+        "best_practices": 100,
+        "seo": 85
+      },
+      "metrics": {
+        "fcp": 6.84,
+        "lcp": 25.93,
+        "cls": 0,
+        "ttfb": 0.12,
+        "speed_index": 7.4,
+        "tti": 26.42,
+        "tbt": 79
+      },
+      "audits": {
+        "unoptimized_images": false,
+        "render_blocking_resources": false,
+        "unused_javascript": true,
+        "unused_css": true,
+        "no_https": false,
+        "no_text_compression": false,
+        "missing_alt_text": false,
+        "large_network_payload": true,
+        "no_lazy_loading": false,
+        "no_cdn": false
+      }
+    },
+    {
+      "id": 19,
+      "name": "KNUST",
+      "url": "https://www.knust.edu.gh",
+      "category": "government",
+      "scores": {
+        "performance": 51,
+        "accessibility": 77,
+        "best_practices": 73,
+        "seo": 75
+      },
+      "metrics": {
+        "fcp": 4.17,
+        "lcp": 25.7,
+        "cls": 0,
+        "ttfb": 0.12,
+        "speed_index": 9.33,
+        "tti": 34.49,
+        "tbt": 326
+      },
+      "audits": {
+        "unoptimized_images": false,
+        "render_blocking_resources": false,
+        "unused_javascript": true,
+        "unused_css": true,
+        "no_https": false,
+        "no_text_compression": false,
+        "missing_alt_text": false,
+        "large_network_payload": true,
+        "no_lazy_loading": false,
+        "no_cdn": false
+      }
+    },
+    {
+      "id": 20,
+      "name": "NHIS Ghana",
+      "url": "https://nhis.gov.gh",
+      "category": "government",
+      "scores": {
+        "performance": 21,
+        "accessibility": 63,
+        "best_practices": 50,
+        "seo": 83
+      },
+      "metrics": {
+        "fcp": 9.46,
+        "lcp": 32.56,
+        "cls": 0.36,
+        "ttfb": 0.44,
+        "speed_index": 26.7,
+        "tti": 45.72,
+        "tbt": 683
+      },
+      "audits": {
+        "unoptimized_images": false,
+        "render_blocking_resources": false,
+        "unused_javascript": true,
+        "unused_css": true,
+        "no_https": false,
+        "no_text_compression": false,
+        "missing_alt_text": false,
+        "large_network_payload": true,
+        "no_lazy_loading": false,
+        "no_cdn": false
+      }
+    }
+  ]
+}

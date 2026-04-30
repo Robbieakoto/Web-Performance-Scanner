@@ -1,0 +1,14 @@
+node_modules/
+
+# Secret keys — never commit these
+.env
+.env.local
+.env.*.local
+
+# Logs & OS files
+*.log
+.DS_Store
+Thumbs.db
+
+# .env.example is safe to commit (it has no real values)
+
