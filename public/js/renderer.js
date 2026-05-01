@@ -130,21 +130,78 @@ function renderRecommendations() {
     return map;
   }, {});
 
+  const n = key => auditCounts[key] || 0;
+
   const recs = [
     {
-      priority: auditCounts['unused_javascript'] >= 15 ? 'critical' : 'high',
+      priority: n('unused_javascript') >= 15 ? 'critical' : 'high',
       title: 'Remove Unused JavaScript',
-      desc: `${auditCounts['unused_javascript']} of 20 sites ship JavaScript that is never executed...`,
-      affected: `${auditCounts['unused_javascript']}/20 sites`,
-      // ...
+      desc: `${n('unused_javascript')} of 20 sites ship JavaScript bundles where a significant portion is never executed. Use code-splitting, tree-shaking, or remove unused third-party scripts to reduce Total Blocking Time.`,
+      affected: `${n('unused_javascript')}/20 sites`,
+      impact: 'TBT −30–70%',
+      effort: 'Medium–High',
     },
-    // and so on for each audit
+    {
+      priority: n('unused_css') >= 12 ? 'critical' : 'high',
+      title: 'Remove Unused CSS',
+      desc: `${n('unused_css')} of 20 sites load stylesheets with large amounts of CSS that are never applied. Use PurgeCSS or built-in tree-shaking in your bundler to strip unused rules before deployment.`,
+      affected: `${n('unused_css')}/20 sites`,
+      impact: 'FCP −0.5–2s',
+      effort: 'Low–Medium',
+    },
+    {
+      priority: n('large_network_payload') >= 10 ? 'high' : 'medium',
+      title: 'Reduce Total Network Payload',
+      desc: `${n('large_network_payload')} of 20 sites transfer more than 1.6 MB of resources on load. Compress assets, lazy-load non-critical resources, and audit third-party scripts for payload cost.`,
+      affected: `${n('large_network_payload')}/20 sites`,
+      impact: 'LCP −1–4s',
+      effort: 'Medium',
+    },
+    {
+      priority: n('missing_alt_text') >= 10 ? 'high' : 'medium',
+      title: 'Add Alt Text to All Images',
+      desc: `${n('missing_alt_text')} of 20 sites are missing alt attributes on images, failing WCAG 2.1 accessibility standards and hurting SEO. Audit with axe DevTools — most can be fixed in an afternoon.`,
+      affected: `${n('missing_alt_text')}/20 sites`,
+      impact: 'A11y +10–20pts',
+      effort: 'Very Low',
+    },
+    {
+      priority: n('unoptimized_images') >= 10 ? 'high' : 'medium',
+      title: 'Compress & Modernise Images',
+      desc: `${n('unoptimized_images')} of 20 sites serve images that could be smaller. Convert to WebP or AVIF and apply proper compression — image payload reductions of 40–80% are common, directly improving LCP.`,
+      affected: `${n('unoptimized_images')}/20 sites`,
+      impact: 'LCP −1–5s',
+      effort: 'Low–Medium',
+    },
+    {
+      priority: n('render_blocking_resources') >= 10 ? 'high' : 'medium',
+      title: 'Eliminate Render-Blocking Resources',
+      desc: `${n('render_blocking_resources')} of 20 sites have scripts or stylesheets blocking the initial render. Defer non-critical JS with async/defer and inline critical CSS to unblock first paint.`,
+      affected: `${n('render_blocking_resources')}/20 sites`,
+      impact: 'FCP −0.5–3s',
+      effort: 'Medium',
+    },
+    {
+      priority: n('no_lazy_loading') >= 8 ? 'high' : 'medium',
+      title: 'Lazy Load Off-Screen Images',
+      desc: `${n('no_lazy_loading')} of 20 sites load all images eagerly on page load. Adding loading="lazy" to off-screen images defers their download and reduces initial page weight immediately.`,
+      affected: `${n('no_lazy_loading')}/20 sites`,
+      impact: 'LCP −0.5–2s',
+      effort: 'Very Low',
+    },
+    {
+      priority: 'medium',
+      title: 'Fix Cache TTL on Static Assets',
+      desc: `${n('poor_cache_ttl')} of 20 sites serve static assets without long cache lifetimes, forcing repeat visitors to re-download unchanged files. Set Cache-Control: max-age=31536000 on versioned assets.`,
+      affected: `${n('poor_cache_ttl')}/20 sites`,
+      impact: 'Repeat visit speed +40–80%',
+      effort: 'Low',
+    },
   ];
-}
 
-const grid = document.getElementById('recsGrid');
-if (!grid) return;
-grid.innerHTML = recs.map((r, i) => `
+  const grid = document.getElementById('recsGrid');
+  if (!grid) return;
+  grid.innerHTML = recs.map((r, i) => `
     <div class="rec-card priority-${r.priority} fade-in" style="animation-delay:${i * 0.07}s">
       <div class="rec-number">${i + 1}</div>
       <div class="rec-body">
@@ -160,6 +217,7 @@ grid.innerHTML = recs.map((r, i) => `
     </div>
   `).join('');
 }
+
 
 // Helpers
 function setText(id, val) {

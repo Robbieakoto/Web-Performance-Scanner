@@ -1,6 +1,6 @@
 {
   "meta": {
-    "scanned_at": "2026-04-30T20:41:50.077Z",
+    "scanned_at": "2026-05-01T11:03:56.633Z",
     "strategy": "mobile",
     "api_version": "v5",
     "total_sites": 20,
@@ -13,32 +13,32 @@
       "url": "https://www.myjoyonline.com",
       "category": "news",
       "scores": {
-        "performance": 18,
-        "accessibility": 58,
-        "best_practices": 67,
-        "seo": 83
+        "performance": 50,
+        "accessibility": 84,
+        "best_practices": 50,
+        "seo": 92
       },
       "metrics": {
-        "fcp": 7.4,
-        "lcp": 18.9,
+        "fcp": 2.86,
+        "lcp": 4.2,
         "inp": null,
-        "cls": 0.29,
-        "ttfb": 2.3,
-        "speed_index": 14.2,
-        "tti": 24.7,
-        "tbt": 3180
+        "cls": 0.01,
+        "ttfb": 0.1,
+        "speed_index": 7.03,
+        "tti": 20.4,
+        "tbt": 1274
       },
       "audits": {
-        "unoptimized_images": true,
-        "render_blocking_resources": true,
+        "unoptimized_images": false,
+        "render_blocking_resources": false,
         "unused_javascript": true,
         "unused_css": true,
         "no_https": false,
-        "no_text_compression": true,
+        "no_text_compression": false,
         "missing_alt_text": true,
         "large_network_payload": true,
-        "no_lazy_loading": true,
-        "poor_cache_ttl": true
+        "no_lazy_loading": false,
+        "poor_cache_ttl": false
       }
     },
     {
@@ -47,32 +47,32 @@
       "url": "https://www.ghanaweb.com",
       "category": "news",
       "scores": {
-        "performance": 11,
-        "accessibility": 44,
-        "best_practices": 54,
-        "seo": 71
+        "performance": 32,
+        "accessibility": 77,
+        "best_practices": 46,
+        "seo": 92
       },
       "metrics": {
-        "fcp": 10.6,
-        "lcp": 27.3,
+        "fcp": 10.57,
+        "lcp": 30.59,
         "inp": null,
-        "cls": 0.58,
-        "ttfb": 3.8,
-        "speed_index": 21.4,
-        "tti": 38.9,
-        "tbt": 6740
+        "cls": 0,
+        "ttfb": 0,
+        "speed_index": 21.79,
+        "tti": 59.71,
+        "tbt": 1101
       },
       "audits": {
-        "unoptimized_images": true,
-        "render_blocking_resources": true,
+        "unoptimized_images": false,
+        "render_blocking_resources": false,
         "unused_javascript": true,
         "unused_css": true,
         "no_https": false,
-        "no_text_compression": true,
+        "no_text_compression": false,
         "missing_alt_text": true,
         "large_network_payload": true,
-        "no_lazy_loading": true,
-        "poor_cache_ttl": true
+        "no_lazy_loading": false,
+        "poor_cache_ttl": false
       }
     },
     {
@@ -81,32 +81,32 @@
       "url": "https://www.graphic.com.gh",
       "category": "news",
       "scores": {
-        "performance": 22,
-        "accessibility": 61,
-        "best_practices": 71,
-        "seo": 80
+        "performance": 49,
+        "accessibility": 91,
+        "best_practices": 54,
+        "seo": 100
       },
       "metrics": {
-        "fcp": 6.1,
-        "lcp": 13.4,
+        "fcp": 2.01,
+        "lcp": 17.89,
         "inp": null,
-        "cls": 0.22,
-        "ttfb": 1.9,
-        "speed_index": 11,
-        "tti": 18.2,
-        "tbt": 2210
+        "cls": 0.01,
+        "ttfb": 0.01,
+        "speed_index": 7.01,
+        "tti": 27.32,
+        "tbt": 706
       },
       "audits": {
-        "unoptimized_images": true,
-        "render_blocking_resources": true,
+        "unoptimized_images": false,
+        "render_blocking_resources": false,
         "unused_javascript": true,
         "unused_css": true,
         "no_https": false,
         "no_text_compression": false,
-        "missing_alt_text": true,
+        "missing_alt_text": false,
         "large_network_payload": true,
-        "no_lazy_loading": true,
-        "poor_cache_ttl": true
+        "no_lazy_loading": false,
+        "poor_cache_ttl": false
       }
     },
     {
@@ -115,30 +115,30 @@
       "url": "https://citinewsroom.com",
       "category": "news",
       "scores": {
-        "performance": 97,
-        "accessibility": 90,
+        "performance": 34,
+        "accessibility": 86,
         "best_practices": 96,
-        "seo": 40
+        "seo": 100
       },
       "metrics": {
-        "fcp": 0.76,
-        "lcp": 2.32,
+        "fcp": 7.38,
+        "lcp": 18.33,
         "inp": null,
-        "cls": 0,
+        "cls": 0.5,
         "ttfb": 0,
-        "speed_index": 1.09,
-        "tti": 2.37,
-        "tbt": 119
+        "speed_index": 7.38,
+        "tti": 18.36,
+        "tbt": 209
       },
       "audits": {
         "unoptimized_images": false,
         "render_blocking_resources": false,
-        "unused_javascript": false,
-        "unused_css": false,
+        "unused_javascript": true,
+        "unused_css": true,
         "no_https": false,
         "no_text_compression": false,
         "missing_alt_text": false,
-        "large_network_payload": false,
+        "large_network_payload": true,
         "no_lazy_loading": false,
         "poor_cache_ttl": false
       }
@@ -149,20 +149,20 @@
       "url": "https://www.pulse.com.gh",
       "category": "news",
       "scores": {
-        "performance": 50,
+        "performance": 64,
         "accessibility": 95,
         "best_practices": 92,
         "seo": 92
       },
       "metrics": {
-        "fcp": 3.15,
-        "lcp": 9.12,
+        "fcp": 3.16,
+        "lcp": 9.04,
         "inp": null,
         "cls": 0,
         "ttfb": 0.01,
-        "speed_index": 5.6,
-        "tti": 9.19,
-        "tbt": 590
+        "speed_index": 5.69,
+        "tti": 9.1,
+        "tbt": 83
       },
       "audits": {
         "unoptimized_images": false,
@@ -183,30 +183,30 @@
       "url": "https://www.gcbbank.com.gh",
       "category": "banking",
       "scores": {
-        "performance": 49,
-        "accessibility": 78,
-        "best_practices": 69,
-        "seo": 75
+        "performance": 84,
+        "accessibility": 67,
+        "best_practices": 92,
+        "seo": 58
       },
       "metrics": {
-        "fcp": 3.19,
-        "lcp": 25.65,
+        "fcp": 2.72,
+        "lcp": 2.72,
         "inp": null,
-        "cls": 0.1,
+        "cls": 0.01,
         "ttfb": 0.02,
-        "speed_index": 6.46,
-        "tti": 26.79,
-        "tbt": 458
+        "speed_index": 8.63,
+        "tti": 2.72,
+        "tbt": 0
       },
       "audits": {
         "unoptimized_images": false,
         "render_blocking_resources": false,
-        "unused_javascript": true,
-        "unused_css": true,
+        "unused_javascript": false,
+        "unused_css": false,
         "no_https": false,
         "no_text_compression": false,
         "missing_alt_text": true,
-        "large_network_payload": true,
+        "large_network_payload": false,
         "no_lazy_loading": false,
         "poor_cache_ttl": false
       }
@@ -217,20 +217,20 @@
       "url": "https://www.absa.com.gh",
       "category": "banking",
       "scores": {
-        "performance": 24,
+        "performance": 21,
         "accessibility": 86,
         "best_practices": 54,
         "seo": 100
       },
       "metrics": {
-        "fcp": 6.58,
-        "lcp": 12.72,
+        "fcp": 6.57,
+        "lcp": 11.88,
         "inp": null,
         "cls": 0.19,
         "ttfb": 0,
-        "speed_index": 8.08,
-        "tti": 32.34,
-        "tbt": 1328
+        "speed_index": 7.33,
+        "tti": 32.33,
+        "tbt": 2240
       },
       "audits": {
         "unoptimized_images": false,
@@ -251,20 +251,20 @@
       "url": "https://www.stanbicbank.com.gh",
       "category": "banking",
       "scores": {
-        "performance": 35,
+        "performance": 44,
         "accessibility": 86,
         "best_practices": 50,
         "seo": 77
       },
       "metrics": {
-        "fcp": 4.3,
-        "lcp": 24.71,
+        "fcp": 4.23,
+        "lcp": 24.22,
         "inp": null,
-        "cls": 0.01,
+        "cls": 0.03,
         "ttfb": 0.01,
-        "speed_index": 10.57,
-        "tti": 25.17,
-        "tbt": 1093
+        "speed_index": 10.18,
+        "tti": 24.72,
+        "tbt": 548
       },
       "audits": {
         "unoptimized_images": false,
@@ -285,20 +285,20 @@
       "url": "https://www.ecobank.com",
       "category": "banking",
       "scores": {
-        "performance": 33,
+        "performance": 9,
         "accessibility": 72,
         "best_practices": 92,
         "seo": 75
       },
       "metrics": {
-        "fcp": 8.43,
-        "lcp": 49.15,
+        "fcp": 8.49,
+        "lcp": 62.98,
         "inp": null,
         "cls": 0.67,
-        "ttfb": 0.11,
-        "speed_index": 8.43,
-        "tti": 49.26,
-        "tbt": 93
+        "ttfb": 0.1,
+        "speed_index": 8.56,
+        "tti": 63.23,
+        "tbt": 1261
       },
       "audits": {
         "unoptimized_images": false,
@@ -316,35 +316,35 @@
     {
       "id": 10,
       "name": "MTN Ghana",
-      "url": "https://www.mtn.com.gh",
+      "url": "https://mtn.com.gh",
       "category": "telecom",
       "scores": {
-        "performance": 36,
-        "accessibility": 69,
-        "best_practices": 75,
-        "seo": 80
+        "performance": 62,
+        "accessibility": 87,
+        "best_practices": 100,
+        "seo": 100
       },
       "metrics": {
-        "fcp": 4.5,
-        "lcp": 11.2,
+        "fcp": 2.56,
+        "lcp": 9.15,
         "inp": null,
-        "cls": 0.14,
-        "ttfb": 1.6,
-        "speed_index": 8.9,
-        "tti": 14.8,
-        "tbt": 1420
+        "cls": 0,
+        "ttfb": 0,
+        "speed_index": 3.24,
+        "tti": 12.08,
+        "tbt": 378
       },
       "audits": {
-        "unoptimized_images": true,
-        "render_blocking_resources": true,
+        "unoptimized_images": false,
+        "render_blocking_resources": false,
         "unused_javascript": true,
         "unused_css": true,
         "no_https": false,
         "no_text_compression": false,
-        "missing_alt_text": true,
-        "large_network_payload": true,
-        "no_lazy_loading": true,
-        "poor_cache_ttl": true
+        "missing_alt_text": false,
+        "large_network_payload": false,
+        "no_lazy_loading": false,
+        "poor_cache_ttl": false
       }
     },
     {
@@ -353,20 +353,20 @@
       "url": "https://www.jumia.com.gh",
       "category": "ecommerce",
       "scores": {
-        "performance": 59,
+        "performance": 60,
         "accessibility": 96,
         "best_practices": 77,
         "seo": 100
       },
       "metrics": {
-        "fcp": 1.69,
-        "lcp": 4.24,
+        "fcp": 1.38,
+        "lcp": 6.32,
         "inp": null,
         "cls": 0,
-        "ttfb": 0.13,
-        "speed_index": 3.9,
-        "tti": 14.5,
-        "tbt": 1311
+        "ttfb": 0.16,
+        "speed_index": 2.79,
+        "tti": 14.32,
+        "tbt": 684
       },
       "audits": {
         "unoptimized_images": false,
@@ -393,13 +393,13 @@
         "seo": 92
       },
       "metrics": {
-        "fcp": 1.2,
-        "lcp": 1.88,
+        "fcp": 1.35,
+        "lcp": 1.8,
         "inp": null,
         "cls": 0,
         "ttfb": 0,
-        "speed_index": 2.33,
-        "tti": 1.9,
+        "speed_index": 2.4,
+        "tti": 1.83,
         "tbt": 0
       },
       "audits": {
@@ -421,20 +421,20 @@
       "url": "https://melcom.com",
       "category": "ecommerce",
       "scores": {
-        "performance": 21,
+        "performance": 23,
         "accessibility": 69,
         "best_practices": 73,
         "seo": 83
       },
       "metrics": {
-        "fcp": 9.19,
-        "lcp": 87.47,
+        "fcp": 11.55,
+        "lcp": 85.93,
         "inp": null,
         "cls": 0.17,
         "ttfb": 0.06,
-        "speed_index": 32.19,
-        "tti": 97.61,
-        "tbt": 1671
+        "speed_index": 24.2,
+        "tti": 94.11,
+        "tbt": 1260
       },
       "audits": {
         "unoptimized_images": false,
@@ -455,20 +455,20 @@
       "url": "https://hubtel.com",
       "category": "fintech",
       "scores": {
-        "performance": 47,
+        "performance": 36,
         "accessibility": 64,
         "best_practices": 92,
         "seo": 85
       },
       "metrics": {
-        "fcp": 6.03,
-        "lcp": 30.15,
+        "fcp": 5.91,
+        "lcp": 27.45,
         "inp": null,
         "cls": 0,
-        "ttfb": 0.02,
-        "speed_index": 8.26,
-        "tti": 31.89,
-        "tbt": 411
+        "ttfb": 0.07,
+        "speed_index": 9.2,
+        "tti": 29.48,
+        "tbt": 915
       },
       "audits": {
         "unoptimized_images": false,
@@ -489,20 +489,20 @@
       "url": "https://paystack.com",
       "category": "ecommerce",
       "scores": {
-        "performance": 97,
+        "performance": 65,
         "accessibility": 90,
         "best_practices": 96,
         "seo": 40
       },
       "metrics": {
-        "fcp": 0.76,
-        "lcp": 2.28,
+        "fcp": 0.86,
+        "lcp": 1.53,
         "inp": null,
         "cls": 0,
         "ttfb": 0,
-        "speed_index": 1.09,
-        "tti": 2.28,
-        "tbt": 130
+        "speed_index": 6.01,
+        "tti": 15.99,
+        "tbt": 12292
       },
       "audits": {
         "unoptimized_images": false,
@@ -523,19 +523,19 @@
       "url": "https://ghana.gov.gh",
       "category": "government",
       "scores": {
-        "performance": 75,
+        "performance": 66,
         "accessibility": 91,
         "best_practices": 92,
         "seo": 92
       },
       "metrics": {
-        "fcp": 3.79,
-        "lcp": 4.53,
+        "fcp": 4.03,
+        "lcp": 7.38,
         "inp": null,
-        "cls": 0,
+        "cls": 0.01,
         "ttfb": 0.01,
-        "speed_index": 4.04,
-        "tti": 4.53,
+        "speed_index": 4.03,
+        "tti": 7.38,
         "tbt": 0
       },
       "audits": {
@@ -591,20 +591,20 @@
       "url": "https://www.ug.edu.gh",
       "category": "government",
       "scores": {
-        "performance": 58,
+        "performance": 54,
         "accessibility": 85,
         "best_practices": 100,
         "seo": 85
       },
       "metrics": {
-        "fcp": 6.92,
-        "lcp": 20.96,
+        "fcp": 6.93,
+        "lcp": 25.7,
         "inp": null,
         "cls": 0,
-        "ttfb": 0.12,
-        "speed_index": 7.4,
-        "tti": 20.96,
-        "tbt": 38
+        "ttfb": 0.14,
+        "speed_index": 8.04,
+        "tti": 26.15,
+        "tbt": 195
       },
       "audits": {
         "unoptimized_images": false,
@@ -625,20 +625,20 @@
       "url": "https://www.knust.edu.gh",
       "category": "government",
       "scores": {
-        "performance": 41,
+        "performance": 49,
         "accessibility": 77,
         "best_practices": 73,
         "seo": 75
       },
       "metrics": {
-        "fcp": 3.87,
-        "lcp": 31.86,
+        "fcp": 3.84,
+        "lcp": 31.67,
         "inp": null,
         "cls": 0,
         "ttfb": 0.12,
-        "speed_index": 8.85,
-        "tti": 33.77,
-        "tbt": 727
+        "speed_index": 9.44,
+        "tti": 34.47,
+        "tbt": 401
       },
       "audits": {
         "unoptimized_images": false,
@@ -659,20 +659,20 @@
       "url": "https://nhis.gov.gh",
       "category": "government",
       "scores": {
-        "performance": 17,
+        "performance": 14,
         "accessibility": 63,
         "best_practices": 50,
         "seo": 83
       },
       "metrics": {
-        "fcp": 9.92,
-        "lcp": 29.44,
+        "fcp": 10.04,
+        "lcp": 34.72,
         "inp": null,
         "cls": 0.36,
-        "ttfb": 1.88,
-        "speed_index": 29.43,
-        "tti": 46.85,
-        "tbt": 937
+        "ttfb": 0.45,
+        "speed_index": 25.22,
+        "tti": 46.94,
+        "tbt": 1189
       },
       "audits": {
         "unoptimized_images": false,
