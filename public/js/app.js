@@ -34,6 +34,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     e.preventDefault();
     document.getElementById('results')?.scrollIntoView({ behavior: 'smooth' });
   });
+
+  // 11. Populate INP methodology note with live coverage count
+  renderINPMethodologyNote();
 });
 
 function setupFilterTabs() {

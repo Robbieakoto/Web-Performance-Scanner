@@ -19,7 +19,7 @@ const ISSUE_SHORT = {
   missing_alt_text: 'Alt Text',
   large_network_payload: 'Large Payload',
   no_lazy_loading: 'No Lazy Load',
-  no_cdn: 'No CDN',
+  poor_cache_ttl: 'Poor Cache TTL',
 };
 
 function scoreClass(score) {
@@ -125,76 +125,26 @@ function renderHeroStats() {
 }
 
 function renderRecommendations() {
+  const auditCounts = getAuditFailureCounts().reduce((map, a) => {
+    map[a.key] = a.count;
+    return map;
+  }, {});
+
   const recs = [
     {
-      priority: 'critical',
-      title: 'Compress & Convert Images to WebP/AVIF',
-      desc: '19 of 20 sites serve unoptimized images. Switching to modern formats (WebP or AVIF) with proper compression can reduce image payload by 40–80%, directly improving LCP.',
-      affected: '19/20 sites',
-      impact: 'LCP −2–8s',
-      effort: 'Low–Medium',
-    },
-    {
-      priority: 'critical',
-      title: 'Eliminate Render-Blocking Resources',
-      desc: '19 sites have scripts or stylesheets blocking initial render. Defer non-critical JS with `async`/`defer`, and inline critical CSS to unblock paint immediately.',
-      affected: '19/20 sites',
-      impact: 'FCP −1–4s',
-      effort: 'Medium',
-    },
-    {
-      priority: 'high',
+      priority: auditCounts['unused_javascript'] >= 15 ? 'critical' : 'high',
       title: 'Remove Unused JavaScript',
-      desc: '18 sites ship large JS bundles where a significant portion is never executed. Use code-splitting, tree-shaking, or remove unused third-party scripts to reduce TBT.',
-      affected: '18/20 sites',
-      impact: 'TBT −30–70%',
-      effort: 'Medium–High',
+      desc: `${auditCounts['unused_javascript']} of 20 sites ship JavaScript that is never executed...`,
+      affected: `${auditCounts['unused_javascript']}/20 sites`,
+      // ...
     },
-    {
-      priority: 'high',
-      title: 'Add Lazy Loading to Off-Screen Images',
-      desc: '15 sites load all images eagerly. Adding `loading="lazy"` to off-screen images defers their download, reducing initial page weight and improving LCP for above-the-fold content.',
-      affected: '15/20 sites',
-      impact: 'LCP −1–3s',
-      effort: 'Low (1 attribute)',
-    },
-    {
-      priority: 'high',
-      title: 'Deploy a CDN (Content Delivery Network)',
-      desc: '14 sites serve assets directly from a single origin server. Using a CDN like Cloudflare (free tier) moves assets geographically closer to users, slashing TTFB by 50–80%.',
-      affected: '14/20 sites',
-      impact: 'TTFB −50–80%',
-      effort: 'Low (DNS change)',
-    },
-    {
-      priority: 'high',
-      title: 'Enable Text Compression (Gzip/Brotli)',
-      desc: '6 sites — mostly government — serve HTML, CSS, and JS without compression. Enabling Gzip or Brotli on the web server takes minutes and can reduce transfer size by 70%.',
-      affected: '6/20 sites',
-      impact: 'Payload −50–70%',
-      effort: 'Very Low',
-    },
-    {
-      priority: 'medium',
-      title: 'Reduce Cumulative Layout Shift (CLS)',
-      desc: 'Most sites show CLS > 0.1, causing visible layout jumps. Fix by setting explicit width/height on images and iframes, and avoiding dynamically injected content above the fold.',
-      affected: '16/20 sites',
-      impact: 'CLS to < 0.1',
-      effort: 'Low–Medium',
-    },
-    {
-      priority: 'medium',
-      title: 'Add Alt Text to All Images',
-      desc: '13 sites are missing alt attributes on images, hurting both accessibility (WCAG 2.1) and SEO. This is a quick win — audit with axe DevTools and fix in an afternoon.',
-      affected: '13/20 sites',
-      impact: 'A11y +10–20pts',
-      effort: 'Very Low',
-    },
+    // and so on for each audit
   ];
+}
 
-  const grid = document.getElementById('recsGrid');
-  if (!grid) return;
-  grid.innerHTML = recs.map((r, i) => `
+const grid = document.getElementById('recsGrid');
+if (!grid) return;
+grid.innerHTML = recs.map((r, i) => `
     <div class="rec-card priority-${r.priority} fade-in" style="animation-delay:${i * 0.07}s">
       <div class="rec-number">${i + 1}</div>
       <div class="rec-body">

@@ -280,6 +280,8 @@ a { color: inherit; text-decoration: none; }
 .badge-banking    { background: rgba(34,197,94,0.15);  color: #4ADE80; }
 .badge-ecommerce  { background: rgba(168,85,247,0.15); color: #C084FC; }
 .badge-government { background: rgba(249,115,22,0.15); color: #FB923C; }
+.badge-fintech    { background: rgba(20,184,166,0.15); color: #2DD4BF; }
+.badge-telecom    { background: rgba(99,102,241,0.15); color: #A5B4FC; }
 
 /* Score ring */
 .score-cell { text-align: center; }
@@ -406,6 +408,13 @@ a { color: inherit; text-decoration: none; }
 .method-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; }
 .method-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
 .method-card p strong { color: var(--text); }
+.method-card p a { color: var(--warn); text-decoration: underline; text-underline-offset: 3px; }
+.method-card p a:hover { color: var(--gold); }
+.method-card--highlight {
+  border-color: rgba(245,158,11,0.25);
+  border-left: 3px solid var(--warn);
+  background: linear-gradient(135deg, var(--dark-3) 80%, rgba(245,158,11,0.04));
+}
 
 /* ─── FOOTER ────────────────────────────────────────────────────── */
 .footer {

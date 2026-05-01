@@ -156,7 +156,7 @@ function parsePSI(site, psiData) {
       missing_alt_text: failed('image-alt'),
       large_network_payload: failed('total-byte-weight'),
       no_lazy_loading: failed('offscreen-images'),
-      no_cdn: failed('uses-long-cache-ttl'),
+      poor_cache_ttl: failed('uses-long-cache-ttl'),  // uses-long-cache-ttl = short cache lifetimes, not absent CDN
     },
   };
 }

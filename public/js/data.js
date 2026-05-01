@@ -41,6 +41,28 @@ function getINPCoverage() {
   };
 }
 
+// Populates the INP methodology card with a live coverage count.
+// Called from app.js after data loads — this is what keeps getINPCoverage() off the dead-code list.
+function renderINPMethodologyNote() {
+  const card = document.getElementById('inpMethodCard');
+  if (!card) return;
+  const { captured, total } = getINPCoverage();
+  const p = card.querySelector('p');
+  if (!p) return;
+  const coveragePhrase = captured === 0
+    ? `None of the ${total} sites`
+    : `Only ${captured} of ${total} sites`;
+  p.innerHTML =
+    `INP (Interaction to Next Paint) requires <em>real user interaction</em> to measure and is ` +
+    `not available via Lighthouse lab simulation &mdash; which is why the INP column shows ` +
+    `<strong>N/A</strong> across all ${total} sites in this audit. ` +
+    `CWV pass/fail is evaluated on LCP and CLS, the two metrics Lighthouse <em>can</em> simulate. ` +
+    `${coveragePhrase} had INP lab data available at scan time. ` +
+    `INP field data for sites with sufficient real-user traffic is accessible via the ` +
+    `<a href="https://developers.google.com/speed/docs/insights/v5/about" target="_blank" rel="noopener">Chrome UX Report (CrUX)</a>.`;
+}
+
+
 
 function getSectorAvg(category) {
   const filtered = SITES.filter(s => s.category === category);
@@ -76,7 +98,7 @@ function auditLabel(key) {
     missing_alt_text:         'Missing Alt Text',
     large_network_payload:    'Large Network Payload',
     no_lazy_loading:          'No Lazy Loading',
-    no_cdn:                   'No CDN Used',
+    poor_cache_ttl:           'Poor Cache TTL',
   };
   return map[key] || key;
 }

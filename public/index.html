@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ghana Web Performance Scanner | PageSpeed Insights Audit</title>
-  <meta name="description" content="A comprehensive web performance audit of 20 major Ghanaian websites across news, banking, e-commerce, and government sectors using Google PageSpeed Insights." />
+  <meta name="description"
+    content="A comprehensive web performance audit of 20 major Ghanaian websites across news, banking, e-commerce, and government sectors using Google PageSpeed Insights." />
   <meta name="keywords" content="Ghana, web performance, PageSpeed Insights, Core Web Vitals, LCP, CLS, FCP" />
 
   <!-- Open Graph -->
@@ -15,7 +17,9 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
 
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
@@ -23,6 +27,7 @@
   <!-- Styles -->
   <link rel="stylesheet" href="css/styles.css" />
 </head>
+
 <body>
 
   <!-- ── NAV ── -->
@@ -88,7 +93,10 @@
       <div class="hero-cta">
         <a href="#results" class="btn btn-primary" id="exploreBtn">
           <span>Explore the Data</span>
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1L15 8L8 15M15 8H1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 1L15 8L8 15M15 8H1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
         </a>
         <a href="#recommendations" class="btn btn-ghost">See Recommendations</a>
       </div>
@@ -166,6 +174,12 @@
         <button class="filter-tab" data-filter="government" id="tab-government">
           <span class="tab-emoji">🏛️</span> Government
         </button>
+        <button class="filter-tab" data-filter="fintech" id="tab-fintech">
+          <span class="tab-emoji">💳</span> Fintech
+        </button>
+        <button class="filter-tab" data-filter="telecom" id="tab-telecom">
+          <span class="tab-emoji">📡</span> Telecom
+        </button>
       </div>
 
       <!-- Table -->
@@ -194,7 +208,8 @@
         </table>
       </div>
       <div class="table-footnote">
-        All audits run in <strong>mobile mode</strong> using the Google PageSpeed Insights API v5. Data collected April 2026.
+        All audits run in <strong>mobile mode</strong> using the Google PageSpeed Insights API v5. Data collected April
+        2026.
         "Passing CWV" requires LCP ≤ 2.5s, INP ≤ 200ms, and CLS ≤ 0.1 — all three Google thresholds.
         Sites where INP was not captured are evaluated on LCP and CLS only.
       </div>
@@ -290,32 +305,48 @@
           <div class="method-card">
             <div class="method-icon">🔬</div>
             <h4>Tool Used</h4>
-            <p>Google PageSpeed Insights API v5, powered by Lighthouse 11. Industry standard for web performance measurement.</p>
+            <p>Google PageSpeed Insights API v5, powered by Lighthouse 11. Industry standard for web performance
+              measurement.</p>
           </div>
           <div class="method-card">
             <div class="method-icon">📱</div>
             <h4>Device Mode</h4>
-            <p>All audits run in <strong>mobile mode</strong> — the most relevant simulation for Ghana where mobile internet dominates (~80% of users).</p>
+            <p>All audits run in <strong>mobile mode</strong> — the most relevant simulation for Ghana where mobile
+              internet dominates (~80% of users).</p>
           </div>
           <div class="method-card">
             <div class="method-icon">🌐</div>
             <h4>Network Simulation</h4>
-            <p>Lighthouse simulates a mid-tier mobile connection (150 Kbps download, 675ms RTT) — representative of typical Ghanaian mobile conditions.</p>
+            <p>Lighthouse simulates a mid-tier mobile connection (150 Kbps download, 675ms RTT) — representative of
+              typical Ghanaian mobile conditions.</p>
           </div>
           <div class="method-card">
             <div class="method-icon">📅</div>
             <h4>Data Collection</h4>
-            <p>Audits were run in April 2026. Results reflect one-time lab data and may vary with time of day and site updates.</p>
+            <p>Audits were run in April 2026. Results reflect one-time lab data and may vary with time of day and site
+              updates.</p>
           </div>
           <div class="method-card">
             <div class="method-icon">🎯</div>
             <h4>Site Selection</h4>
-            <p>20 high-traffic Ghanaian sites selected across 4 sectors: News, Banking/Finance, E-Commerce/Tech, and Government/Education.</p>
+            <p>20 high-traffic Ghanaian sites selected across 4 sectors: News, Banking/Finance, E-Commerce/Tech, and
+              Government/Education.</p>
           </div>
           <div class="method-card">
             <div class="method-icon">📊</div>
             <h4>Scoring</h4>
-            <p>Performance score is a weighted composite of FCP, LCP, Speed Index, TBT, and CLS — all measured by Lighthouse.</p>
+            <p>Performance score is a weighted composite of FCP, LCP, Speed Index, TBT, and CLS — all measured by
+              Lighthouse.</p>
+          </div>
+          <div class="method-card method-card--highlight" id="inpMethodCard">
+            <div class="method-icon">⚡</div>
+            <h4>INP &amp; Lab Data Limits</h4>
+            <p>INP (Interaction to Next Paint) requires <em>real user interaction</em> to measure and is not available
+              via Lighthouse lab simulation. This is why the INP column shows <strong>N/A</strong> for all 20 sites.
+              CWV pass/fail is still evaluated on LCP and CLS — the two metrics Lighthouse <em>can</em> simulate.
+              INP field data is available via <a href="https://developers.google.com/speed/docs/insights/v5/about"
+                target="_blank" rel="noopener">Chrome UX Report (CrUX)</a> for sites with sufficient real-user
+              traffic.</p>
           </div>
         </div>
       </div>
@@ -332,7 +363,8 @@
           <p class="footer-tagline">Ghana Web Performance Scanner</p>
         </div>
         <div class="footer-links">
-          <a href="https://developers.google.com/speed/docs/insights/v5/about" target="_blank" rel="noopener">PageSpeed Insights API</a>
+          <a href="https://developers.google.com/speed/docs/insights/v5/about" target="_blank" rel="noopener">PageSpeed
+            Insights API</a>
           <a href="https://web.dev/vitals/" target="_blank" rel="noopener">Core Web Vitals</a>
           <a href="https://web.dev/lighthouse-performance/" target="_blank" rel="noopener">Lighthouse Docs</a>
         </div>
@@ -349,4 +381,5 @@
   <script src="js/renderer.js"></script>
   <script src="js/app.js"></script>
 </body>
+
 </html>
